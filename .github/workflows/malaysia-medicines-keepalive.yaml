@@ -2,7 +2,7 @@ name: App Services Keep Alive
 
 on:
   schedule:
-    - cron: "*/18 * * * *"
+    - cron: "*/5 * * * *"
 
 jobs:
   deploy:
