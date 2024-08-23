@@ -1,0 +1,20 @@
+name: App Services Keep Alive
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    permissions:
+      actions: write
+    steps:
+
+      - name: Dev Environment Product Scrape
+        run: |
+          curl https://devmalaysiamedicinesjob.azurewebsites.net/${{ secrets.PRODUCT_SCRAPE_ENDPOINT }}
+
+      - name: Prod Dev Environment Product Scrape
+        run: |
+          curl https://malaysiamedicinesjob.azurewebsites.net/${{ secrets.PRODUCT_SCRAPE_ENDPOINT }}
