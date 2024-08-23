@@ -7,8 +7,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-24.04
-    permissions:
-      actions: write
     steps:
 
       - name: Dev Environment Product Scrape
