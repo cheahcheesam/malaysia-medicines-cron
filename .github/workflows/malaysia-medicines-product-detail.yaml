@@ -1,0 +1,18 @@
+name: Malaysia Medicines Product Details Scrape
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    steps:
+
+      - name: Dev Environment Product Details Scrape
+        run: |
+          curl https://devmalaysiamedicinesjob.azurewebsites.net/${{ secrets.PRODUCT_DETAIL_SCRAPE_ENDPOINT }}
+
+      - name: Prod Dev Environment Product Details Scrape
+        run: |
+          curl https://malaysiamedicinesjob.azurewebsites.net/${{ secrets.PRODUCT_DETAIL_SCRAPE_ENDPOINT }}
