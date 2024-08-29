@@ -15,11 +15,9 @@ jobs:
           total_duration=$((5 * 3600 + 30 * 60))
           while [ $x -lt $total_duration ]; do
             curl https://devmalaysiamedicinesjob.azurewebsites.net/${{ secrets.PRODUCT_DETAIL_SCRAPE_ENDPOINT }}
+            echo "Successful"
             curl https://malaysiamedicinesjob.azurewebsites.net/${{ secrets.PRODUCT_DETAIL_SCRAPE_ENDPOINT }}
+            echo "Successful"
             sleep 60
             x=$((x + 60))
           done
-
-#      - name: Prod Dev Environment Product Details Scrape
-#        run: |
-#          curl https://malaysiamedicinesjob.azurewebsites.net/${{ secrets.PRODUCT_DETAIL_SCRAPE_ENDPOINT }}
