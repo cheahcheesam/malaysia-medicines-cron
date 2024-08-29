@@ -15,7 +15,7 @@ jobs:
           total_duration=$((5 * 3600 + 30 * 60))
           while [ $x -lt $total_duration ]; do
             curl https://devmalaysiamedicinesjob.azurewebsites.net/${{ secrets.PRODUCT_DETAIL_SCRAPE_ENDPOINT }}
-            curl https://malaysiamedicinesjob.azurewebsites.net/${{ secrets.PRODUCT_DETAIL_SCRAPE_ENDPOINT }}\
+            curl https://malaysiamedicinesjob.azurewebsites.net/${{ secrets.PRODUCT_DETAIL_SCRAPE_ENDPOINT }}
             sleep 60
             x=$((x + 60))
           done
