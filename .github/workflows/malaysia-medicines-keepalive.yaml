@@ -2,7 +2,7 @@ name: App Services Keep Alive
 
 on:
   schedule:
-    - cron: "*/18 * * * *"
+    - cron: "*/5 * * * *"
 
 jobs:
   deploy:
@@ -11,17 +11,23 @@ jobs:
       actions: write
     steps:
 
-      - name: Dev Services (API, UI, Job) keep alive
+        # Runs for 5 hours 45 minutes
+      - name: Dev and Prod Services (API, UI, Job) keep alive
         run: |
-          curl https://devmalaysiamedicinesapi.azurewebsites.net/health & \
-          curl https://devmalaysiamedicines.azurewebsites.net/health & \
-          curl https://devmalaysiamedicinesjob.azurewebsites.net/health
-
-      - name: Prod Services (API, UI, Job) keep alive
-        run: |
-          curl https://malaysiamedicinesapi.azurewebsites.net/health & \
-          curl https://malaysiamedicines.azurewebsites.net/health & \
-          curl https://malaysiamedicinesjob.azurewebsites.net/health
+          x=0
+          total_duration=$((5 * 3600 + 45 * 60))
+          while [ $x -lt $total_duration ]; do
+            curl https://devmalaysiamedicinesapi.azurewebsites.net/health
+            curl https://devmalaysiamedicines.azurewebsites.net/health
+            curl https://devmalaysiamedicinesjob.azurewebsites.net/health
+            echo "Successful"
+            curl https://malaysiamedicinesapi.azurewebsites.net/health
+            curl https://malaysiamedicines.azurewebsites.net/health
+            curl https://malaysiamedicinesjob.azurewebsites.net/health
+            echo "Successful"
+            sleep 900
+            x=$((x + 900))
+          done
 
       - name: GitHub Scheduled Actions Keepalive
         if: github.event_name == 'schedule'
