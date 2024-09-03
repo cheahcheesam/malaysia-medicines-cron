@@ -19,6 +19,6 @@ jobs:
             echo "Successful"
             curl https://malaysiamedicinesjob.azurewebsites.net/${{ secrets.PRODUCT_DETAIL_SCRAPE_ENDPOINT }}
             echo "Successful"
-            sleep 60
-            x=$((x + 60))
+            sleep 500
+            x=$((x + 500))
           done
