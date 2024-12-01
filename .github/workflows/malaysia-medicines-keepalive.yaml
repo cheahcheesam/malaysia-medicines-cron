@@ -12,7 +12,7 @@ jobs:
     steps:
 
         # Runs for 5 hours 45 minutes
-      - name: Dev and Prod Services (API, UI, Job) keep alive
+      - name: Malaysia Medicines Dev and Prod Services (API, UI, Job) and Pharst Services (API) keep alive
         run: |
           x=0
           total_duration=$((5 * 3600 + 45 * 60))
@@ -25,16 +25,6 @@ jobs:
             curl https://malaysiamedicines.azurewebsites.net/health
             curl https://malaysiamedicinesjob.azurewebsites.net/health
             echo "Successful"
-            sleep 900
-            x=$((x + 900))
-          done
-
-        # Runs for 5 hours 45 minutes
-      - name: Pharst Services (API) keep alive
-        run: |
-          x=0
-          total_duration=$((5 * 3600 + 45 * 60))
-          while [ $x -lt $total_duration ]; do
             curl https://pharstapi.azurewebsites.net/health
             curl https://pharstjob.azurewebsites.net/health
             echo "Successful"
