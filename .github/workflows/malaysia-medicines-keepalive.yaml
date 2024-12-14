@@ -31,6 +31,13 @@ jobs:
             curl https://pharstapi.azurewebsites.net/health
             curl https://pharstjob.azurewebsites.net/health
             echo "Successful"
+            curl https://devpharstapi.azurewebsites.net/sendlogtoloki
+            curl https://devpharstjob.azurewebsites.net/sendlogtoloki
+            echo "Successful"
+            echo "Successful"
+            curl https://pharstapi.azurewebsites.net/sendlogtoloki
+            curl https://pharstjob.azurewebsites.net/sendlogtoloki
+            echo "Successful"
             sleep 900
             x=$((x + 900))
           done
