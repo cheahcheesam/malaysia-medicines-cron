@@ -38,8 +38,8 @@ jobs:
             curl https://pharstapi.azurewebsites.net/sendlogtoloki
             curl https://pharstjob.azurewebsites.net/sendlogtoloki
             echo "Successful"
-            sleep 900
-            x=$((x + 900))
+            sleep 300
+            x=$((x + 300))
           done
 
       - name: GitHub Scheduled Actions Keepalive
