@@ -11,11 +11,11 @@ jobs:
       actions: write
     steps:
 
-        # Runs for 5 hours 45 minutes
-      - name: Malaysia Medicines Services (API, UI, Job) and Pharst Services (API) keep alive
+        # Runs for 5 hours 55 minutes
+      - name: Malaysia Medicines Services (API, UI, Job) and Pharst Services (API, Job) keep alive
         run: |
           x=0
-          total_duration=$((5 * 3600 + 45 * 60))
+          total_duration=$((5 * 3600 + 55 * 60))
           while [ $x -lt $total_duration ]; do
             curl https://devmalaysiamedicinesapi.azurewebsites.net/health
             curl https://devmalaysiamedicines.azurewebsites.net/health
@@ -38,8 +38,8 @@ jobs:
             curl https://pharstapi.azurewebsites.net/sendlogtoloki
             curl https://pharstjob.azurewebsites.net/sendlogtoloki
             echo "Successful"
-            sleep 900
-            x=$((x + 900))
+            sleep 300
+            x=$((x + 300))
           done
 
       - name: GitHub Scheduled Actions Keepalive
